@@ -53,6 +53,17 @@ target_link_libraries(TransferTaskTest PRIVATE
 
 add_test(NAME TransferTaskTest COMMAND TransferTaskTest)
 
+add_executable(ReceivedFileStoreTest
+    storage/tst_received_file_store.cpp
+)
+
+target_link_libraries(ReceivedFileStoreTest PRIVATE
+    androp_core
+    Qt5::Test
+)
+
+add_test(NAME ReceivedFileStoreTest COMMAND ReceivedFileStoreTest)
+
 add_custom_target(androp_tests
-    DEPENDS ProtocolCodecTest PacketFramingTest ConfigStoreTest DeviceManagerTest TransferTaskTest
+    DEPENDS ProtocolCodecTest PacketFramingTest ConfigStoreTest DeviceManagerTest TransferTaskTest ReceivedFileStoreTest
 )
