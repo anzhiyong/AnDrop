@@ -11,3 +11,6 @@ cmake-build-*/
 *.dylib
 *.so
 *.app/
+.cache/
+Testing/
+.worktrees/
