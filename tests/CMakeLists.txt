@@ -31,6 +31,17 @@ target_link_libraries(ConfigStoreTest PRIVATE
 
 add_test(NAME ConfigStoreTest COMMAND ConfigStoreTest)
 
+add_executable(DeviceManagerTest
+    core/tst_device_manager.cpp
+)
+
+target_link_libraries(DeviceManagerTest PRIVATE
+    androp_core
+    Qt5::Test
+)
+
+add_test(NAME DeviceManagerTest COMMAND DeviceManagerTest)
+
 add_custom_target(androp_tests
-    DEPENDS ProtocolCodecTest PacketFramingTest ConfigStoreTest
+    DEPENDS ProtocolCodecTest PacketFramingTest ConfigStoreTest DeviceManagerTest
 )
