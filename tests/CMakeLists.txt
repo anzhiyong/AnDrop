@@ -42,6 +42,17 @@ target_link_libraries(DeviceManagerTest PRIVATE
 
 add_test(NAME DeviceManagerTest COMMAND DeviceManagerTest)
 
+add_executable(TransferTaskTest
+    core/tst_transfer_task.cpp
+)
+
+target_link_libraries(TransferTaskTest PRIVATE
+    androp_core
+    Qt5::Test
+)
+
+add_test(NAME TransferTaskTest COMMAND TransferTaskTest)
+
 add_custom_target(androp_tests
-    DEPENDS ProtocolCodecTest PacketFramingTest ConfigStoreTest DeviceManagerTest
+    DEPENDS ProtocolCodecTest PacketFramingTest ConfigStoreTest DeviceManagerTest TransferTaskTest
 )
