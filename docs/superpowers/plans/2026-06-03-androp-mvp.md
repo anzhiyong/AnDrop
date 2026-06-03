@@ -15,6 +15,7 @@
 - 所有新增代码注释必须使用中文。
 - 注释只解释设计意图、边界条件或复杂流程，不做逐行翻译。
 - 每个任务完成后必须提交一次 Git commit。
+- Git 提交信息必须使用中文。
 - 每个实现任务先写测试，再写实现。
 - 除 UI 任务外，核心逻辑必须优先放在可单元测试的类中。
 - 不允许 UI 类直接读写 socket。
@@ -191,7 +192,7 @@ No tests were found!!!
 
 ```bash
 git add CMakeLists.txt README.md src/app/main.cpp tests/CMakeLists.txt .gitignore
-git commit -m "chore: add Qt5 CMake project skeleton"
+git commit -m "搭建 Qt5 CMake 工程骨架"
 ```
 
 ### Task 2: 实现协议类型和 JSON 编解码
@@ -439,7 +440,7 @@ Expected:
 
 ```bash
 git add CMakeLists.txt tests/CMakeLists.txt src/protocol tests/protocol
-git commit -m "feat: add protocol json codec"
+git commit -m "添加协议 JSON 编解码"
 ```
 
 ### Task 3: 实现 TCP 帧读写工具
@@ -553,7 +554,7 @@ Expected:
 
 ```bash
 git add CMakeLists.txt tests/CMakeLists.txt src/network/PacketReader.* src/network/PacketWriter.* tests/network
-git commit -m "feat: add tcp packet framing helpers"
+git commit -m "添加 TCP 数据帧读写工具"
 ```
 
 ### Task 4: 实现配置模型和持久化
@@ -659,7 +660,7 @@ Expected:
 
 ```bash
 git add CMakeLists.txt tests/CMakeLists.txt src/core/AppConfig.h src/storage/ConfigStore.* tests/storage/tst_config_store.cpp
-git commit -m "feat: add app config persistence"
+git commit -m "添加应用配置持久化"
 ```
 
 ### Task 5: 实现设备管理器
@@ -748,7 +749,7 @@ Expected:
 
 ```bash
 git add CMakeLists.txt tests/CMakeLists.txt src/core/DeviceManager.* tests/core/tst_device_manager.cpp
-git commit -m "feat: add device manager"
+git commit -m "添加设备管理器"
 ```
 
 ### Task 6: 实现传输任务状态机
@@ -854,7 +855,7 @@ Expected:
 
 ```bash
 git add CMakeLists.txt tests/CMakeLists.txt src/core/TransferTask.* tests/core/tst_transfer_task.cpp
-git commit -m "feat: add transfer task state machine"
+git commit -m "添加传输任务状态机"
 ```
 
 ### Task 7: 实现接收文件存储规则
@@ -939,7 +940,7 @@ Expected:
 
 ```bash
 git add CMakeLists.txt tests/CMakeLists.txt src/storage/ReceivedFileStore.* tests/storage/tst_received_file_store.cpp
-git commit -m "feat: add received file storage rules"
+git commit -m "添加接收文件存储规则"
 ```
 
 ### Task 8: 实现 UDP 发现服务
@@ -1015,7 +1016,7 @@ Build succeeds.
 
 ```bash
 git add CMakeLists.txt src/network/DiscoveryService.*
-git commit -m "feat: add udp discovery service"
+git commit -m "添加 UDP 设备发现服务"
 ```
 
 ### Task 9: 实现 TCP 服务端、客户端和传输会话
@@ -1139,7 +1140,7 @@ All existing tests pass.
 
 ```bash
 git add CMakeLists.txt src/network/TcpServer.* src/network/TcpClient.* src/core/TransferManager.*
-git commit -m "feat: add tcp transfer services"
+git commit -m "添加 TCP 文件传输服务"
 ```
 
 ### Task 10: 实现 Qt Widgets 页面骨架
@@ -1233,7 +1234,7 @@ No visible text overflow in default window size.
 
 ```bash
 git add CMakeLists.txt src/app/main.cpp src/ui
-git commit -m "feat: add Qt widgets application shell"
+git commit -m "添加 Qt Widgets 应用外壳"
 ```
 
 ### Task 11: 实现 AppContext 并完成服务接线
@@ -1318,7 +1319,7 @@ All tests pass.
 
 ```bash
 git add CMakeLists.txt src/app src/ui
-git commit -m "feat: wire application services"
+git commit -m "接入应用服务"
 ```
 
 ### Task 12: 双实例端到端验证和修复
@@ -1405,7 +1406,7 @@ Expected:
 
 ```bash
 git add src docs/manual-test-mvp.md tests
-git commit -m "test: document and verify mvp manual flow"
+git commit -m "记录并验证 MVP 手动流程"
 ```
 
 ## 3. 最终验收命令
