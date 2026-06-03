@@ -22,6 +22,7 @@ add_library(androp_core STATIC
     src/network/PacketReader.cpp
     src/network/PacketWriter.cpp
     src/protocol/ProtocolCodec.cpp
+    src/storage/ConfigStore.cpp
 )
 
 target_include_directories(androp_core PUBLIC

@@ -20,6 +20,17 @@ target_link_libraries(PacketFramingTest PRIVATE
 
 add_test(NAME PacketFramingTest COMMAND PacketFramingTest)
 
+add_executable(ConfigStoreTest
+    storage/tst_config_store.cpp
+)
+
+target_link_libraries(ConfigStoreTest PRIVATE
+    androp_core
+    Qt5::Test
+)
+
+add_test(NAME ConfigStoreTest COMMAND ConfigStoreTest)
+
 add_custom_target(androp_tests
-    DEPENDS ProtocolCodecTest PacketFramingTest
+    DEPENDS ProtocolCodecTest PacketFramingTest ConfigStoreTest
 )
