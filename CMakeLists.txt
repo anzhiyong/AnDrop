@@ -43,6 +43,12 @@ target_link_libraries(androp_core PUBLIC
 
 add_executable(AnDrop
     src/app/main.cpp
+    src/ui/DeviceListPage.cpp
+    src/ui/HomePage.cpp
+    src/ui/MainWindow.cpp
+    src/ui/ReceiveDialog.cpp
+    src/ui/SettingsPage.cpp
+    src/ui/TransferPage.cpp
 )
 
 target_link_libraries(AnDrop PRIVATE
