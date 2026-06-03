@@ -19,6 +19,8 @@ endif()
 find_package(Qt5 REQUIRED COMPONENTS Widgets Network Test Concurrent)
 
 add_library(androp_core STATIC
+    src/network/PacketReader.cpp
+    src/network/PacketWriter.cpp
     src/protocol/ProtocolCodec.cpp
 )
 

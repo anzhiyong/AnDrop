@@ -9,6 +9,17 @@ target_link_libraries(ProtocolCodecTest PRIVATE
 
 add_test(NAME ProtocolCodecTest COMMAND ProtocolCodecTest)
 
+add_executable(PacketFramingTest
+    network/tst_packet_framing.cpp
+)
+
+target_link_libraries(PacketFramingTest PRIVATE
+    androp_core
+    Qt5::Test
+)
+
+add_test(NAME PacketFramingTest COMMAND PacketFramingTest)
+
 add_custom_target(androp_tests
-    DEPENDS ProtocolCodecTest
+    DEPENDS ProtocolCodecTest PacketFramingTest
 )
