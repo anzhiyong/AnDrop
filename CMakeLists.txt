@@ -18,11 +18,24 @@ endif()
 
 find_package(Qt5 REQUIRED COMPONENTS Widgets Network Test Concurrent)
 
+add_library(androp_core STATIC
+    src/protocol/ProtocolCodec.cpp
+)
+
+target_include_directories(androp_core PUBLIC
+    ${CMAKE_CURRENT_SOURCE_DIR}/src
+)
+
+target_link_libraries(androp_core PUBLIC
+    Qt5::Core
+)
+
 add_executable(AnDrop
     src/app/main.cpp
 )
 
 target_link_libraries(AnDrop PRIVATE
+    androp_core
     Qt5::Widgets
     Qt5::Network
     Qt5::Concurrent
