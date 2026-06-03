@@ -3,7 +3,17 @@
 ## 单机双实例
 
 1. 启动实例 A，使用 UDP 端口 53316，TCP 端口 53317。
-2. 启动实例 B，使用 UDP 端口 53318，TCP 端口 53319。
+
+   ```bash
+   ANDROP_CONFIG_PATH=/tmp/androp-a.json ANDROP_UDP_PORT=53316 ANDROP_TCP_PORT=53317 ./build/AnDrop
+   ```
+
+2. 启动实例 B，使用同一个 UDP 发现端口 53316，TCP 端口 53319。
+
+   ```bash
+   ANDROP_CONFIG_PATH=/tmp/androp-b.json ANDROP_UDP_PORT=53316 ANDROP_TCP_PORT=53319 ./build/AnDrop
+   ```
+
 3. 确认两边设备列表能看到对方。
 4. 从 A 选择一个小文件发送给 B。
 5. 在 B 上点击接受。
@@ -31,4 +41,4 @@ ctest --test-dir build --output-on-failure
 ## 当前验证状态
 
 - 自动测试：已由开发流程持续执行。
-- 单机双实例：需要在接收端完整落盘流程接入后执行。
+- 单机双实例：需要在桌面环境中按上面的命令人工执行。
