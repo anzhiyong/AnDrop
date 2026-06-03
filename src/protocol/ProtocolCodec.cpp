@@ -50,6 +50,68 @@ DecodeResult ProtocolCodec::validateVersion(const QJsonObject &json)
     return result;
 }
 
+AnnounceResult ProtocolCodec::decodeAnnounce(const QJsonObject &json, const QString &ipAddress)
+{
+    AnnounceResult result;
+
+    const DecodeResult version = validateVersion(json);
+    if (!version.isValid) {
+        result.error = version.error;
+        return result;
+    }
+
+    if (json.value("type").toString() != MessageTypes::Announce) {
+        result.error = QStringLiteral("消息类型不是设备公告");
+        return result;
+    }
+
+    if (!hasString(json, "deviceId") || !hasString(json, "deviceName") ||
+        !hasString(json, "platform") || !json.value("tcpPort").isDouble()) {
+        result.error = QStringLiteral("设备公告字段不完整");
+        return result;
+    }
+
+    const int tcpPort = json.value("tcpPort").toInt();
+    if (tcpPort < 1 || tcpPort > 65535) {
+        result.error = QStringLiteral("设备公告端口非法");
+        return result;
+    }
+
+    result.device.deviceId = json.value("deviceId").toString();
+    result.device.deviceName = json.value("deviceName").toString();
+    result.device.platform = json.value("platform").toString();
+    result.device.ipAddress = ipAddress;
+    result.device.tcpPort = static_cast<quint16>(tcpPort);
+    result.device.lastSeen = QDateTime::currentDateTimeUtc();
+    result.isValid = true;
+    return result;
+}
+
+ByeResult ProtocolCodec::decodeBye(const QJsonObject &json)
+{
+    ByeResult result;
+
+    const DecodeResult version = validateVersion(json);
+    if (!version.isValid) {
+        result.error = version.error;
+        return result;
+    }
+
+    if (json.value("type").toString() != MessageTypes::Bye) {
+        result.error = QStringLiteral("消息类型不是设备离线");
+        return result;
+    }
+
+    if (!hasString(json, "deviceId")) {
+        result.error = QStringLiteral("设备离线消息缺少 deviceId");
+        return result;
+    }
+
+    result.deviceId = json.value("deviceId").toString();
+    result.isValid = true;
+    return result;
+}
+
 SendRequest ProtocolCodec::decodeSendRequest(const QJsonObject &json)
 {
     SendRequest request;

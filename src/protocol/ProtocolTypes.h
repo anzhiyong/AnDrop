@@ -1,5 +1,6 @@
 #pragma once
 
+#include "protocol/DeviceInfo.h"
 #include "protocol/FileManifest.h"
 
 #include <QList>
@@ -25,4 +26,18 @@ struct SendRequest
     QString fromDeviceId;
     QList<FileManifest> files;
     qint64 totalSize = 0;
+};
+
+struct AnnounceResult
+{
+    bool isValid = false;
+    QString error;
+    DeviceInfo device;
+};
+
+struct ByeResult
+{
+    bool isValid = false;
+    QString error;
+    QString deviceId;
 };

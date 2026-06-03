@@ -61,6 +61,39 @@ private slots:
 
         QCOMPARE(ProtocolCodec::validateVersion(json).isValid, false);
     }
+
+    void decodesAnnounceMessage()
+    {
+        QJsonObject json;
+        json["type"] = "announce";
+        json["version"] = 1;
+        json["deviceId"] = "device-1";
+        json["deviceName"] = QStringLiteral("测试设备");
+        json["platform"] = "macos";
+        json["tcpPort"] = 53317;
+        json["timestamp"] = 123;
+
+        const auto result = ProtocolCodec::decodeAnnounce(json, "192.168.1.2");
+
+        QVERIFY(result.isValid);
+        QCOMPARE(result.device.deviceId, QStringLiteral("device-1"));
+        QCOMPARE(result.device.deviceName, QStringLiteral("测试设备"));
+        QCOMPARE(result.device.ipAddress, QStringLiteral("192.168.1.2"));
+        QCOMPARE(result.device.tcpPort, quint16(53317));
+    }
+
+    void decodesByeMessage()
+    {
+        QJsonObject json;
+        json["type"] = "bye";
+        json["version"] = 1;
+        json["deviceId"] = "device-1";
+
+        const auto result = ProtocolCodec::decodeBye(json);
+
+        QVERIFY(result.isValid);
+        QCOMPARE(result.deviceId, QStringLiteral("device-1"));
+    }
 };
 
 QTEST_MAIN(ProtocolCodecTest)

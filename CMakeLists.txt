@@ -21,6 +21,7 @@ find_package(Qt5 REQUIRED COMPONENTS Widgets Network Test Concurrent)
 add_library(androp_core STATIC
     src/core/DeviceManager.cpp
     src/core/TransferTask.cpp
+    src/network/DiscoveryService.cpp
     src/network/PacketReader.cpp
     src/network/PacketWriter.cpp
     src/protocol/ProtocolCodec.cpp
@@ -34,6 +35,7 @@ target_include_directories(androp_core PUBLIC
 
 target_link_libraries(androp_core PUBLIC
     Qt5::Core
+    Qt5::Network
 )
 
 add_executable(AnDrop
