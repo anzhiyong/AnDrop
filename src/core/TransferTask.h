@@ -1,5 +1,7 @@
 #pragma once
 
+#include <QList>
+#include <QMetaType>
 #include <QString>
 
 enum class TransferState
@@ -17,6 +19,7 @@ enum class TransferState
 class TransferTask
 {
 public:
+    TransferTask() = default;
     TransferTask(QString transferId, qint64 totalBytes);
 
     QString transferId() const;
@@ -39,3 +42,6 @@ private:
     qint64 m_transferredBytes = 0;
     QString m_errorMessage;
 };
+
+Q_DECLARE_METATYPE(TransferTask)
+Q_DECLARE_METATYPE(QList<TransferTask>)

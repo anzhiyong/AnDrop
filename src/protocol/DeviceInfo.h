@@ -1,6 +1,8 @@
 #pragma once
 
 #include <QDateTime>
+#include <QList>
+#include <QMetaType>
 #include <QString>
 
 struct DeviceInfo
@@ -12,3 +14,6 @@ struct DeviceInfo
     quint16 tcpPort = 53317;
     QDateTime lastSeen;
 };
+
+Q_DECLARE_METATYPE(DeviceInfo)
+Q_DECLARE_METATYPE(QList<DeviceInfo>)

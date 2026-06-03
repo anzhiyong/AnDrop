@@ -42,6 +42,7 @@ target_link_libraries(androp_core PUBLIC
 )
 
 add_executable(AnDrop
+    src/app/AppContext.cpp
     src/app/main.cpp
     src/ui/DeviceListPage.cpp
     src/ui/HomePage.cpp
