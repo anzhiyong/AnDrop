@@ -80,6 +80,25 @@ private slots:
         QVERIFY(reader.takeFrames().isEmpty());
         QVERIFY(!reader.errorString().isEmpty());
     }
+
+    void treatsFileDoneSizeAsControlField()
+    {
+        QJsonObject body;
+        body["type"] = "file_done";
+        body["version"] = 1;
+        body["transferId"] = "transfer-1";
+        body["fileId"] = "file-1";
+        body["size"] = 12;
+
+        PacketReader reader;
+        reader.append(PacketWriter::encodeControlFrame(body));
+
+        const QList<PacketFrame> frames = reader.takeFrames();
+
+        QCOMPARE(frames.size(), 1);
+        QCOMPARE(frames.first().header.value("type").toString(), QStringLiteral("file_done"));
+        QCOMPARE(frames.first().hasPayload, false);
+    }
 };
 
 QTEST_MAIN(PacketFramingTest)

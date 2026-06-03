@@ -1,5 +1,6 @@
 #include "network/PacketReader.h"
 
+#include "protocol/MessageTypes.h"
 #include "protocol/ProtocolTypes.h"
 
 #include <QDataStream>
@@ -55,7 +56,8 @@ QList<PacketFrame> PacketReader::takeFrames()
         frame.header = document.object();
 
         qint64 payloadSize = 0;
-        if (frame.header.contains("size") && frame.header.value("size").isDouble()) {
+        if (frame.header.value("type").toString() == MessageTypes::FileChunk &&
+            frame.header.contains("size") && frame.header.value("size").isDouble()) {
             payloadSize = static_cast<qint64>(frame.header.value("size").toDouble());
             if (payloadSize < 0) {
                 m_error = QStringLiteral("二进制载荷长度非法");

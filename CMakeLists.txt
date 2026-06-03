@@ -20,10 +20,13 @@ find_package(Qt5 REQUIRED COMPONENTS Widgets Network Test Concurrent)
 
 add_library(androp_core STATIC
     src/core/DeviceManager.cpp
+    src/core/TransferManager.cpp
     src/core/TransferTask.cpp
     src/network/DiscoveryService.cpp
     src/network/PacketReader.cpp
     src/network/PacketWriter.cpp
+    src/network/TcpClient.cpp
+    src/network/TcpServer.cpp
     src/protocol/ProtocolCodec.cpp
     src/storage/ConfigStore.cpp
     src/storage/ReceivedFileStore.cpp
