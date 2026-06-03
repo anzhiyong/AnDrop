@@ -1,0 +1,13 @@
+.DS_Store
+build/
+cmake-build-*/
+*.user
+*.pro.user
+*.autosave
+*.o
+*.obj
+*.exe
+*.dll
+*.dylib
+*.so
+*.app/
